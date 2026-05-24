@@ -573,7 +573,7 @@ footer{background:var(--concord-dark);padding:48px 36px 28px;text-align:center}
         <p>Learning differences are not a reflection of intelligence, motivation, or potential. They are simply differences in how students process and engage with information. At Ateres Shoshana, our approach is designed around the student, not the system.</p>
         <p></p>
         
-        <p><strong>Ateres Shoshana was created for families who need more than a mainstream classroom can offer, but who refuse to settle for anything less than a full, joyful high school experience rooted in Torah values.</strong></p>
+        <p><strong>Ateres Shoshana was created for the girl who needs more than a mainstream classroom can offer. A bright, capable student who deserves a full, joyful high school experience rooted in Torah values, with the support designed around how she learns.</strong></p>
       </div>
       <div class="pillars">
         <div class="pill-card">
@@ -796,6 +796,29 @@ footer{background:var(--concord-dark);padding:48px 36px 28px;text-align:center}
 <script>
 // Nav shadow
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('shadow',scrollY>30));
+document.querySelector('.burger').addEventListener('click',function(){
+  var links = document.querySelector('.nav-links');
+  var isOpen = links.style.display === 'flex';
+  links.style.display = isOpen ? 'none' : 'flex';
+  links.style.flexDirection = 'column';
+  links.style.position = 'absolute';
+  links.style.top = '100%';
+  links.style.left = '0';
+  links.style.right = '0';
+  links.style.background = '#fff';
+  links.style.padding = isOpen ? '0' : '20px';
+  links.style.boxShadow = isOpen ? 'none' : '0 8px 24px rgba(0,0,0,0.1)';
+  links.style.gap = '16px';
+  links.style.zIndex = '999';
+});
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){
+    var links = document.querySelector('.nav-links');
+    if(window.innerWidth <= 768){
+      links.style.display = 'none';
+    }
+  });
+});
 // Reveal
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.1,rootMargin:'0px 0px -40px'});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
